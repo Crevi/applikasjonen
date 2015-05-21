@@ -3,6 +3,8 @@ from django.contrib import admin
 from theme import views
 
 urlpatterns = patterns('',
+	url(r'^$', include('theme.urls')),
+	url(r'^users/', include('users.urls')),
+	url(r'^site_details/', include ('site_details.urls')),
     url(r'^admin/', include(admin.site.urls)), 
-    url(r'^$', views.frontpage, name='frontpage')
 )
