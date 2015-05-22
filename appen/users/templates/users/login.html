@@ -1,1 +1,21 @@
-<p>Hello World!</p>
+{% extends 'users/base.html' %}
+{% block container %}
+	<form class="signin-form" method="POST" action="{% url 'user_login' %}">
+		<!-- for security of the external url while using POST method-->
+		{% csrf_token %}
+		<h2 class="signin-heading">Sign in</h2>
+
+		{% if login_failed %}
+		<div class="invalid-login" role="alert"> Invalid login. Try again.</div>
+		{% endif %}
+
+		<label for="inputUsername" class="sr-only">Username</label>
+		<!-- making the username field an autofocus and categorizing it as a required field -->
+		<input type="text" name="username" class="control" placeholder="Username" required autofocus>
+		<label for:"inputPassword" class="sr-only">Password</label>
+		<input type="password" name="password" class="control" placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in!</button>
+	</form>
+
+{% endblock %} 
+

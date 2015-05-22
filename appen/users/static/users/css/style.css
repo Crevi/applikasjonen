@@ -1,0 +1,15 @@
+.signin-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F6F6F6;
+  font-size: 14px;
+}
+
+.control {
+	color: red;
+}
+
+.signin-heading {
+	font-size: 18px;
+}
