@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.shortcuts import redirect 
@@ -21,4 +22,17 @@ def user_logout(request):
 	return redirect('frontpage')
 
 def user_register(request):
-	pass
+	context = {}
+	if request.method == "POST":
+		user = User()
+		user.fName = request.POST.get('firstname')
+		user.lName = request.POST.get('lastname')
+		user.email = request.POST.get('email')
+		user.username = request.POST.get('username')
+		user.set_password(request.POST.get('password'))
+		user.save()
+		context['user_saved'] = True
+	return render(request, 'users/register.html', context)
+
+
+
