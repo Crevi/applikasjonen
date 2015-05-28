@@ -1,5 +1,10 @@
 {% extends 'site_details/base.html' %}
 {% block container %}
+{% if user.is_anonymous %}
+
+	<p>You have to be logged in to see this page</p><a href="{% url 'frontpage' %}">Go back to frontpage?</a>
+
+{% else %}
 	<h1>Your Account Settings</h1>
 	<ol>
 		<li>Your Name: {{ user.first_name }} {{ user.last_name }}</li>
@@ -7,4 +12,5 @@
 		<li>Your username: {{ user.username }}</li>
 	</ol>
 
+{% endif %}
 {% endblock %}
