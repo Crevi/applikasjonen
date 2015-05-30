@@ -24,6 +24,24 @@
 		</form>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Comments</h2>
+			<table class="table">
+			{% for comment in comments %}
+				<tr>
+					<td><p>Her er {{ comment.comment }}</p></td>
+					<td>{{ comment.comment_by }}</td>
+				<tr>
+				{% empty %} 
+				<tr>
+					<td>Sorry no comments so far</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
 {% else %}
 	<div class="container">
 		<h1>Welcome to Appen!</h1>
