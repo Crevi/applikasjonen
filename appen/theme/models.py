@@ -10,3 +10,6 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return u'%s' % self.comment
+
+	class Meta: 
+		ordering = ['-comment_datetime']
