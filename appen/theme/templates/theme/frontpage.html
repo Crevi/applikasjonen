@@ -6,7 +6,40 @@
 		<p>- Feel free to comment.</p>
 	</div>
 
+	<div class="container">
 	<div class="row">
+		<div class="col-sm-12">
+			<h2>Comments</h2>
+			<table class="table">
+			{% for comment in comments %}
+				<tr>
+					<td><p>{{ comment.comment }}</p></td>
+					<td>Comment by: {{ comment.comment_by }}</td>
+					<td>{{ comment.comment_datetime }}</td>
+					<td><a href="#">More details</a></td>
+				<tr>
+				{% empty %} 
+				<tr>
+					<td>Sorry no comments so far</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+			<div class="container">
+				{% if comments.has_previous %}
+				<a href="?page={{ comments.previous_page_number }}">Previous</a>
+				{% endif %}
+
+				| {{ comments.number }} |
+
+				{% if comments.has_next %}
+				<a href="?page={{ comments.next_page_number }}">Next</a>
+				{% endif %}
+			</div>
+			
+		</div>
+
+		<div class="row">
 		<div class="col-sm-12">
 			<h2>Add a comment</h2>
 		<form class="form-horizontal" method="POST">
@@ -24,14 +57,24 @@
 		</form>
 		</div>
 	</div>
+
+{% else %}
+	<div class="container">
+		<h1>Welcome to Appen!</h1>
+		<p>- Sign in to comment.</p>
+	</div>
+
+	<div class="container">
 	<div class="row">
 		<div class="col-sm-12">
 			<h2>Comments</h2>
 			<table class="table">
 			{% for comment in comments %}
 				<tr>
-					<td><p>Her er {{ comment.comment }}</p></td>
-					<td>{{ comment.comment_by }}</td>
+					<td><p>{{ comment.comment }}</p></td>
+					<td>Comment by: {{ comment.comment_by }}</td>
+					<td>{{ comment.comment_datetime }}</td>
+					<td><a href="#">More details</a></td>
 				<tr>
 				{% empty %} 
 				<tr>
@@ -40,14 +83,19 @@
 				{% endfor %}
 			</table>
 		</div>
-	</div>
+			<div class="container">
+				{% if comments.has_previous %}
+				<a href="?page={{ comments.previous_page_number }}">Previous</a>
+				{% endif %}
 
-{% else %}
-	<div class="container">
-		<h1>Welcome to Appen!</h1>
-		<p>- Sign in to comment.</p>
-	</div>
+				| {{ comments.number }} |
 
+				{% if comments.has_next %}
+				<a href="?page={{ comments.next_page_number }}">Next</a>
+				{% endif %}
+			</div>
+			
+		</div>
 	</div>
 {% endif %}
 {% endblock %} 
