@@ -29,6 +29,11 @@ def user_register(request):
 		user.last_name = request.POST.get('lastname')
 		user.email = request.POST.get('email')
 		user.username = request.POST.get('username')
+		if User.objects.filter(username=user.username).exists():
+			context['username_not_unique'] = True
+		elif User.objects.filter(email=user.email).exists():
+			context['email_taken'] = True
+		return render(request, 'users/register.html', context)
 		user.set_password(request.POST.get('password'))
 		user.save()
 		context['user_saved'] = True
