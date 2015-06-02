@@ -40,3 +40,16 @@ def user_register(request):
 	return render(request, 'users/register.html', context)
 
 
+def change_user_info(request):
+	context = {}
+	if request.method == "POST":
+		user = request.user
+		first_name = request.POST.get('name_change') 
+		user.first_name = first_name
+		last_name = request.POST.get('lastname_change')
+		user.last_name = last_name
+		email = request.POST.get('email_change')
+		user.email = email
+		user.save()
+		context['user_saved'] = True
+	return render(request, 'users/account_settings.html', context)
