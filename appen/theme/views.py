@@ -35,5 +35,20 @@ def frontpage(request):
 
 	return render(request, 'theme/frontpage.html', context)
 
+def add_likes (request, user_id, comment_id): 
+	comment = Comment.objects.get(pk=comment_id)
+	comment.likes = comment.likes + 1
+	comment.save()
+	data = {'comment_updated': comment.likes}
+	return JsonResponse(data)
 
+
+def comment_details(request, comment_id):
+	comments = Comment.objects.all().filter(id=comment_id)
+
+	context = {
+	'comments': comments, 
+	}
+	
+	return render(request, 'theme/comment_details.html', context)
  

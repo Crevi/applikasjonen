@@ -16,7 +16,9 @@
 					<td><p>{{ comment.comment }}</p></td>
 					<td>Comment by: {{ comment.comment_by }}</td>
 					<td>{{ comment.comment_datetime }}</td>
-					<td><a href="#">More details</a></td>
+					<td id="id-likes-for-comment-{{ comment.id }}">{{ comment.likes }}</td>
+					<td><a href="" class="add-comment-link" data-commentid="{{ comment.id }}"> Like </a></td>
+					<td><a href="{% url 'comment_details' comment.id %}"> More details</a></td>
 				<tr>
 				{% empty %} 
 				<tr>
@@ -57,6 +59,8 @@
 		</form>
 		</div>
 	</div>
+</div>
+<input type="hidden" id="add_likes_url" value="/site_details/{{ user.id }}/adding_likes">
 
 {% else %}
 	<div class="container">
@@ -74,7 +78,8 @@
 					<td><p>{{ comment.comment }}</p></td>
 					<td>Comment by: {{ comment.comment_by }}</td>
 					<td>{{ comment.comment_datetime }}</td>
-					<td><a href="#">More details</a></td>
+					<td id="likes">{{ comment.likes }}</td>
+					<td><a href="{% url 'comment_details' comment.id %}">More details</a></td>
 				<tr>
 				{% empty %} 
 				<tr>
@@ -98,6 +103,7 @@
 		</div>
 	</div>
 {% endif %}
+
 {% endblock %} 
 
 
