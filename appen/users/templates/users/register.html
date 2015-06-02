@@ -4,11 +4,9 @@
 <h1>Become a user today !</h1>
 {% if user_saved %}
 	<div class="alert alert-success" role="alert">Registration was successful</div>
-{% endif %} 
-{% if username_not_unique %}
+{% elif username_not_unique %}
 	<div class="alert alert-danger" role="alert">Username already in use !</div>
-{% endif %}
-{% if email_taken %}
+{% elif email_taken %}
 	<div class="alert alert-danger" role="alert">Email already in use !</div>
 {% endif %}
 
