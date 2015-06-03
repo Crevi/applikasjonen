@@ -6,6 +6,14 @@
 {% endblock %}
 
 {% block body %}
+	<!-- making sure the nav bar appears on every page -->
+	<div class="container-fluid">
+		<nav class="navbar navbar-inverse">
+			<ul class="nav nav-pills">
+				<li role="presentation" class="active"><a href="{% url 'frontpage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+			</ul>
+		</nav>
+	</div>
 	<div class="container">
 	{% block container %}{% endblock %}
 	</div>

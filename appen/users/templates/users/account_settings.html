@@ -16,29 +16,29 @@
 		<li>Your username: {{ user.username }}</li>
 	</ul>
 </div>
-	<div class="container">
-		<form method="POST" action="">{% csrf_token %}
-			<div class="change-form">
-				<div>
-					<label for="changeFname">Change First Name</label>
-					<input type="text" class="control" name="name_change" value="{{ user.first_name }}"  id="changeFname" placeholder="New first name">
-				</div>
-
-				<div>
-					<td><label for="changeLname">Change Last Name</label>
-					<input type="text" class="control" name="lastname_change" value="{{ user.last_name }}" id="changeLname" placeholder="new last name">
-				</div>
-				
-				<div>
-					<label for="changeEmail">Change your email</label>
-					<input type="text" class="control" name="email_change" value="{{ user.email }}" id="changeEmail" placeholder="example@email.com">
-				</div>
-				<div>
-					<button type="submit" class="button">Change</button>
-				</div>
+<div class="container">
+	<form method="POST" action="">{% csrf_token %}
+		<div class="change-form">
+			<div>
+				<label for="changeFname">Change First Name</label>
+				<input type="text" class="control" name="name_change" value="{{ user.first_name }}"  id="changeFname" placeholder="New first name">
 			</div>
-		</form>
-	</div>
+
+			<div>
+				<td><label for="changeLname">Change Last Name</label>
+				<input type="text" class="control" name="lastname_change" value="{{ user.last_name }}" id="changeLname" placeholder="new last name">
+			</div>
+				
+			<div>
+				<label for="changeEmail">Change your email</label>
+				<input type="text" class="control" name="email_change" value="{{ user.email }}" id="changeEmail" placeholder="example@email.com">
+			</div>
+			<div>
+				<button type="submit" class="button">Change</button>
+			</div>
+		</div>
+	</form>
+</div>
 
 {% endif %}
 {% endblock %}

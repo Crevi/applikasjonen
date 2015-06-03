@@ -17,7 +17,7 @@
 					<td>Comment by: {{ comment.comment_by }}</td>
 					<td>{{ comment.comment_datetime }}</td>
 					<td id="id-likes-for-comment-{{ comment.id }}">{{ comment.likes }}</td>
-					<td><a href="" class="add-comment-link" data-commentid="{{ comment.id }}"> Like </a></td>
+					<td><a href="" class="add-comment-link" data-commentid="{{ comment.id }}"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a></td>
 					<td><a href="{% url 'comment_details' comment.id %}"> More details</a></td>
 				<tr>
 				{% empty %} 
@@ -78,7 +78,7 @@
 					<td><p>{{ comment.comment }}</p></td>
 					<td>Comment by: {{ comment.comment_by }}</td>
 					<td>{{ comment.comment_datetime }}</td>
-					<td id="likes">{{ comment.likes }}</td>
+					<td id="likes">likes: {{ comment.likes }}</td>
 					<td><a href="{% url 'comment_details' comment.id %}">More details</a></td>
 				<tr>
 				{% empty %} 

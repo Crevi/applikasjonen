@@ -10,6 +10,9 @@ from theme.models import Comment
 # Create your views here.
 
 def frontpage(request):
+	# retrieving the text typed into the input fields in frontpage.html 
+	# (and retrieving user and date and time)
+	# and saving this as a comment. 
 	if request.method == "POST":
 		new_comment_text = request.POST.get('new_comment')
 		new_comment = Comment()
@@ -18,8 +21,10 @@ def frontpage(request):
 		new_comment.comment_datetime = timezone.now()
 		new_comment.save()
 
+	# getting all comments from class Comment	
 	comments = Comment.objects.all()
 	page_number = request.GET.get('page', 1)
+	# limiting to 5 comments per page 
 	paginator = Paginator(comments, 5)
 	try: 
 		comments = paginator.page(page_number)
@@ -28,18 +33,20 @@ def frontpage(request):
 	except EmptyPage:
 		comments = paginator.page(paginator.num_pages)
 
+	# making a dictionary 	
 	context = {
-		#'user': user,
 		'comments': comments,
 	}
 
 	return render(request, 'theme/frontpage.html', context)
 
 def add_likes (request, user_id, comment_id): 
+	# getting the relevant comment
 	comment = Comment.objects.get(pk=comment_id)
 	comment.likes = comment.likes + 1
 	comment.save()
 	data = {'comment_updated': comment.likes}
+	#refering to the appen.js file
 	return JsonResponse(data)
 
 

@@ -30,6 +30,7 @@ def user_register(request):
 		user.email = request.POST.get('email')
 		user.username = request.POST.get('username')
 		user.set_password(request.POST.get('password'))
+		# validation of unique username and email 
 		if User.objects.filter(username=user.username).exists():
 			context['username_not_unique'] = True
 		elif User.objects.filter(email=user.email).exists():
